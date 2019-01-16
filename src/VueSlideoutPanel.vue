@@ -85,6 +85,10 @@ export default {
       type: String,
       default: "Close"
     },
+    preventOverlayClick{
+      type: boolean,
+      default: false
+    },
     closeAllHtml: {
       type: String,
       default: "Close all"
@@ -276,7 +280,10 @@ export default {
       if(this.isShifted) {
         this.setTransform(this.$refs.dock,['right',easeOutSine,'1.2ss']);
       }
-      this.closeDock();
+      
+      if(!this.preventOverlayClick){
+        this.closeDock();
+      }
     }
   }
 }
